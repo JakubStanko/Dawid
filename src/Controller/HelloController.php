@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 class HelloController extends AbstractController
 {
     /**
-     * @Route("/main")
+     * @Route("/home")
      */
     public function main(): Response
     {

@@ -1,9 +1,65 @@
 $frameColor: #cbcbcb;
+$containerRadius: 0px;
+$containerPadding: 5px;
+$buttonColor: #bf360c;
+$buttonRadius: 3px;
+$buttonMargi: 4px;
+$HBContainerColor: #dd2c00;
+$textColor: white;
+$textFamily: verdana;
+$textSize: 15px;
 
 body {
-    padding: 5px;
+    height: 100%;
+    margin : 0;
 }
 
 input {
     border: 1px solid $frameColor;
+}
+
+.head-container{
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    background-color: $HBContainerColor;
+    border-radius: $containerRadius;
+    padding: $containerPadding;
+}
+
+.head-nav{
+    float: right;
+    display: inline-block;
+    margin-right: 30px;
+    margin-top: 8px;
+}
+
+.foot-container{
+    width: 100%;
+    height: 40px;
+    background-color: $HBContainerColor;
+    border-radius: $containerRadius;
+    padding: $containerPadding;
+}
+
+.logo-text{
+    color: $textColor;
+    font-size: 48px;
+    font-family: 'Zen Tokyo Zoo', cursive;
+}
+
+.main-text{
+    color: $textColor;
+    font-family: $textFamily;
+    font-size: $textSize;
+}
+.main-button{
+    border-radius: $buttonRadius;
+    color: $textColor;
+    margin: $buttonMargi;
+    background-color: $buttonColor;
+    width: 100px;
+    height: 40px;
+    border: 0px;
+    cursor: pointer;
 }

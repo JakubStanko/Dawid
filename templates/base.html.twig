@@ -2,25 +2,39 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>
             {% block title %}
                 D&J Professionelle PolsterReinigung
             {% endblock %}
         </title>
+        <link href="https://fonts.googleapis.com/css2?family=Zen+Tokyo+Zoo&display=swap" rel="stylesheet">
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
-
         {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
+            {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
     <body>
         {% block head %}
-            <div class="">
-
+            <div class="head-container contrainer">
+                <span class="logo-text">D&J</span>
+                <span class="main-text d-none d-lg-block">Professionelle PolsterReinigung</span>
+                <div class="head-nav">
+                    <button class="main-button">Home</button>
+                    <button class="main-button">Leistungen</button>
+                    <button class="main-button">Kontakt</button>
+                </div>
             </div>
         {% endblock %}
-        {% block body %}{% endblock %}
+        {% block body %}
+
+        {% endblock %}
+        {% block foot%}
+            <div class="foot-container">
+                <button class="main-button">Einloggen</button>
+            </div>
+        {% endblock %}
     </body>
 </html>
