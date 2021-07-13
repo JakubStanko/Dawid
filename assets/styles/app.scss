@@ -1,17 +1,32 @@
 $frameColor: #cbcbcb;
 $containerRadius: 0px;
-$containerPadding: 5px;
+$containerPadding: 2px;
 $buttonColor: #bf360c;
+$buttonHoverColor: #d84315;
 $buttonRadius: 3px;
 $buttonMargi: 4px;
 $HBContainerColor: #dd2c00;
 $textColor: white;
 $textFamily: verdana;
 $textSize: 15px;
+$contentTextColor: #546e7a;
+$pictureRadius: 8px;
+$fontSansSC: 'Encode Sans SC', sans-serif;
 
+html,
 body {
-    height: 100%;
-    margin : 0;
+    margin: 0 auto;
+    height:100%;
+}
+
+a:link,a:visited,a:active {
+    color: $textColor;
+    text-decoration: none;
+}
+
+a:hover {
+    color: $textColor!important;
+    text-decoration: none;
 }
 
 input {
@@ -19,12 +34,11 @@ input {
 }
 
 .head-container{
-    position: fixed;
     width: 100%;
-    height: 60px;
     background-color: $HBContainerColor;
     border-radius: $containerRadius;
     padding: $containerPadding;
+    height: 60px;
 }
 
 .head-nav{
@@ -34,9 +48,41 @@ input {
     margin-top: 8px;
 }
 
-.foot-container{
+.custom-nav{
+    background-color: #ff7043;
+    float: left;
+    margin-left: 0px;
     width: 100%;
-    height: 40px;
+    margin-top: 0px;
+    padding: 5px;
+    .main-button {
+        width: 100%;
+        margin-left: 0px;
+    }
+}
+
+.head-menu{
+    position: absolute;
+    background-image: url("../../public/icons/ico-menu.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid $textColor;
+    border-radius: 8px;
+    height: 48px;
+    width: 48px;
+    cursor: pointer;
+    margin-top: 5px;
+    right: 10px;
+}
+
+.body-container{
+    min-height: 100%;
+}
+
+.foot-container{
+    text-align: center;
+    width: 100%;
+    min-height: 60px;
     background-color: $HBContainerColor;
     border-radius: $containerRadius;
     padding: $containerPadding;
@@ -53,6 +99,7 @@ input {
     font-family: $textFamily;
     font-size: $textSize;
 }
+
 .main-button{
     border-radius: $buttonRadius;
     color: $textColor;
@@ -62,4 +109,229 @@ input {
     height: 40px;
     border: 0px;
     cursor: pointer;
+}
+
+.main-button:hover{
+    background-color: $buttonHoverColor;
+}
+
+.welcome-container,.offer-container,.position-container,.recommendation-container,.contact-container,.services-container{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    max-width: 800px;
+}
+
+.welcome-content{
+    display: inline-block;
+}
+
+.content-title,.recommendation-person{
+    font-family: $fontSansSC;
+    font-weight: bold;
+    color: $contentTextColor;
+}
+
+.content-text,.recommendation-value{
+    font-family: $fontSansSC;
+    color: $contentTextColor;
+}
+
+.content-frame{
+    border-radius: 8px;
+    border: 1px solid $frameColor;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.icon-container{
+    height: 64px;
+    width: 64px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hello-icon{
+    background-image: url("../../public/icons/ico-hello.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 64px;
+    width: 64px;
+    display: block;
+}
+
+.contact-icon{
+    background-image: url("../../public/icons/ico-contact.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 64px;
+    width: 64px;
+    display: block;
+}
+
+.wash-icon{
+    background-image: url("../../public/icons/ico-wash.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 64px;
+    width: 64px;
+    display: block;
+}
+
+.okay-icon{
+    background-image: url("../../public/icons/ico-okay.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 64px;
+    width: 64px;
+    display: block;
+}
+
+.custom-okay-icon{
+    height: 16px;
+    width: 16px;
+    background-size: 16px 16px;
+    display: inline-block;
+    margin: 2px;
+    margin-right: 10px;
+    margin-bottom: -2px;
+}
+
+.star-icon{
+    background-image: url("../../public/icons/ico-star.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 64px;
+    width: 64px;
+    display: block;
+}
+
+.custom-star-icon{
+    height: 32px;
+    width: 32px;
+    background-size: 32px 32px;
+    display: inline-block;
+    margin: 2px;
+}
+
+.work-icon{
+    background-image: url("../../public/icons/ico-work.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 64px;
+    width: 64px;
+    display: block;
+}
+
+.picture-container{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    min-height: 200px;
+    border-radius: $pictureRadius;
+}
+
+.clean-pic{
+    background-image: url("../../public/pictures/pic-clean.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.hands-pic{
+    background-image: url("../../public/pictures/pic-hands.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.pc-pic{
+    height: 500px;
+    width: 80%;
+    background-size: 100%;
+    border-radius: $pictureRadius;
+    margin-left: 10%;
+}
+
+.ph-pic{
+    height: 200px;
+    width: 100%;
+    background-size: 100%;
+}
+
+.dark-background-container{
+    top: 0px;
+    position: absolute;
+    height: 99%;
+    width: 100%;
+}
+
+.dark-background{
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.6;
+}
+
+.dark-background-title{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    color: $textColor;
+    font-weight: bold;
+    font-family: $fontSansSC;
+    font-size: 20px;
+    top: 50px;
+}
+
+.star-container{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    height: 48px;
+    top: 130px;
+    text-align: center;
+}
+
+.position-container{
+    text-align: center;
+}
+
+.google-map {
+    margin-top: 15px;
+    border-radius: 5px;
+    width: 80%;
+    min-width: 250px;
+    height: 80%;
+    min-height: 330px;
+}
+
+.container-shadow{
+    -webkit-box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.75);
+}
+
+.recommendation-position{
+    border: 1px solid $frameColor;
+    width: 100%;
+    padding: 10px;
+    border-radius: $pictureRadius;
+    min-height: 100px;
+    margin-bottom: 5px;
+}
+
+line{
+    border: 0;
+    border-top: 1px solid gray;
+    width: 100%;
+    display: block;
+    margin-bottom: 50px;
 }
