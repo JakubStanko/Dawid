@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% import "form/recaptcha_form.html.twig" as recaptchaForm %}
 
 {% block body %}
     <div class="body-container">
@@ -49,6 +50,24 @@
                 Kontaktformular
             </div>
             <line></line>
+            {% if form is defined %}
+                {{ form_start(form) }}
+                    {% for label, messages in app.flashes(['reCaptcha','success']) %}
+                        {% for message in messages %}
+                            <div class="flash-{{ label }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    {{ form_errors(form) }}
+                    {{ form_row(form.name) }}
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.message) }}
+                    {{ form_row(form.PersonalData) }}
+                    {{ recaptchaForm.recaptcha("6Ldb1JUbAAAAAJgn9Cy0LtgvdLF6c-dJSjolDvA0") }}
+                    {{ form_row(form.Update) }}
+                {{ form_end(form) }}
+            {% endif %}
         </div>
     </div>
 {% endblock %}

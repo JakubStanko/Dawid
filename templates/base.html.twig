@@ -26,16 +26,16 @@
                 <span class="logo-text">D&J</span>
                 <span class="main-text d-none d-lg-inline-block">Professionelle PolsterReinigung</span>
                 <div class="head-nav d-none d-lg-inline-block">
-                    <button class="main-button" onclick="location.href='/home'">Home</button>
-                    <button class="main-button" onclick="location.href='/services'">Leistungen</button>
-                    <button class="main-button" onclick="location.href='/contact'">Kontakt</button>
+                    <button class="main-button" onclick="location.href='{{ path('app_recommendation_list') }}'">Home</button>
+                    <button class="main-button" onclick="location.href='{{ path('app_services_main') }}'">Leistungen</button>
+                    <button class="main-button" onclick="location.href='{{ path('app_contact_add') }}'">Kontakt</button>
                 </div>
                 <i class="head-menu d-inline-block d-lg-none" data-menu="true"></i>
             </div>
             <div class="head-nav custom-nav d-none">
-                <button class="main-button" onclick="location.href='/home'">Home</button><br />
-                <button class="main-button" onclick="location.href='/services'">Leistungen</button><br />
-                <button class="main-button" onclick="location.href='/contact'">Kontakt</button>
+                <button class="main-button" onclick="location.href='{{ path('app_recommendation_list') }}'">Home</button><br />
+                <button class="main-button" onclick="location.href='{{ path('app_services_main') }}'">Leistungen</button><br />
+                <button class="main-button" onclick="location.href='{{ path('app_contact_add') }}'">Kontakt</button>
             </div>
         {% endblock %}
         {% block body %}
@@ -44,12 +44,27 @@
         {% block foot %}
             <div class="foot-container">
                 <div class="links-container">
-                    <a href="#">Impressum</a> |
-                    <a href="#">Kontakt</a>
+                    <a href="{{ path('app_impressum_main') }}">Impressum</a> <b style="color: white;">|</b>
+                    <a href="{{ path('app_personalldata_main') }}">Datenschutz</a> <b style="color: white;">|</b>
+                    <a href="{{ path('app_contact_add') }}">Kontakt</a>
                 </div>
                 <span class="main-text">Copyright © js.px 2021</span>
                 <span class="main-text">Alle Rechte vorbehalten.</span>
                 <!--<button class="main-button">Einloggen</button>-->
+            </div>
+        {% endblock %}
+        {% block toTheTop %}
+            <div class="toTheTop">
+                Up
+            </div>
+        {% endblock %}
+        {% block preloader %}
+            <div class="preloader-container">
+                <center style="position: relative; top: 30%; color: white;">
+                    <span class="logo-text">D&J</span><br />
+                    Loading...
+                </center>
+                <line style="border-color: white; position: relative; top: 40%;"></line>
             </div>
         {% endblock %}
     </body>

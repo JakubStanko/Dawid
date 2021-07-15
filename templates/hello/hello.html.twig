@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% import "form/recaptcha_form.html.twig" as recaptchaForm %}
 
 {% block body %}
     <div class="body-container">
@@ -60,30 +61,43 @@
             </div>
         </div>
         <div class="recommendation-container">
-            <div class="recommendation-position">
-                <div class="recommendation-person">
-                    Adam
+            {% for recommendation in comments %}
+                <div class="recommendation-position">
+                    <div class="recommendation-person">
+                        {{ recommendation.name }}
+                        <span class="recommendation-date">
+                            {{ recommendation.date|date('Y-m-d') }}
+                        </span>
+                    </div>
+                    <div class="recommendation-value">
+                        {{ recommendation.recommendation }}
+                    </div>
                 </div>
-                <div class="recommendation-value">
-                    Polecam usługi D&J. Jestem bardzo zadowolony
+            {% else %}
+                <div class="recommendation-position">
+                    <div class="recommendation-person">
+                        Robot
+                    </div>
+                    <div class="recommendation-value">
+                        keine Meinung.
+                    </div>
                 </div>
-            </div>
-            <div class="recommendation-position">
-                <div class="recommendation-person">
-                    Alicja
-                </div>
-                <div class="recommendation-value">
-                    Super!! Najlepsze usługi czyszczenia tapicerki w Berlinie!
-                </div>
-            </div>
-            <div class="recommendation-position">
-                <div class="recommendation-person">
-                    Agnieszka
-                </div>
-                <div class="recommendation-value">
-                    Nie zawiodłam się, tapicerka jest czysta. Usługi warte swojej ceny!
-                </div>
-            </div>
+            {% endfor %}
+            {% if form is defined %}
+                {% for label, messages in app.flashes(['success', 'reCaptcha', 'error']) %}
+                    {% for message in messages %}
+                        <div class="flash-{{ label }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {{ form_start(form, {'action': path('app_recommendation_create'), 'method': 'POST'}) }}
+                    {{ form_row(form.Name) }}
+                    {{ form_row(form.Recommendation) }}
+                    {{ recaptchaForm.recaptcha("6Ldb1JUbAAAAAJgn9Cy0LtgvdLF6c-dJSjolDvA0") }}
+                    {{ form_row(form.Update) }}
+                {{ form_end(form) }}
+            {% endif %}
         </div>
         <div class="position-container">
             <div class="content-title">

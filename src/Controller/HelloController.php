@@ -2,19 +2,20 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Recommendation;
+use App\Type\RecommendationType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectToRoute;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class HelloController extends AbstractController
+/**
+ * class HelloController
+ */
+class HelloController extends Controller
 {
-    /**
-     * @Route("/home")
-     */
-    public function main(): Response
-    {
-        return $this->render('hello/hello.html.twig',[
-            'empty_key'=>'empty'
-        ]);
-    }
+
 }
