@@ -29,6 +29,9 @@
                     <button class="main-button" onclick="location.href='{{ path('app_recommendation_list') }}'">Home</button>
                     <button class="main-button" onclick="location.href='{{ path('app_services_main') }}'">Leistungen</button>
                     <button class="main-button" onclick="location.href='{{ path('app_contact_add') }}'">Kontakt</button>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <button class="main-button" onclick="location.href='{{ path('app_logout') }}'">Logout</button>
+                    {% endif %}
                 </div>
                 <i class="head-menu d-inline-block d-lg-none" data-menu="true"></i>
             </div>
@@ -36,6 +39,9 @@
                 <button class="main-button" onclick="location.href='{{ path('app_recommendation_list') }}'">Home</button><br />
                 <button class="main-button" onclick="location.href='{{ path('app_services_main') }}'">Leistungen</button><br />
                 <button class="main-button" onclick="location.href='{{ path('app_contact_add') }}'">Kontakt</button>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <button class="main-button" onclick="location.href='{{ path('app_logout') }}'">Logout</button>
+                {% endif %}
             </div>
         {% endblock %}
         {% block body %}
