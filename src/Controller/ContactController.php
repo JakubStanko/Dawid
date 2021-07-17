@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\ReCaptchaKeys;
 use App\Entity\Messages;
 use App\Type\MessagesType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,10 +19,11 @@ class ContactController extends Controller
     /**
      * @Route("/contact")
      * @param EntityManagerInterface $entityManager
+     * @param ReCaptchaKeys $ReCaptchaKeys
      * @param Request $request
      * @return Response
      */
-    public function add(Request $request, EntityManagerInterface $entityManager): Response
+    public function add(ReCaptchaKeys $ReCaptchaKeys, Request $request, EntityManagerInterface $entityManager): Response
     {
         //Create new formular for Messages $request
         $Messages = new Messages();
@@ -31,7 +33,9 @@ class ContactController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             //Check ReChaptcha v2
-            $recaptcha = new ReCaptcha('6Ldb1JUbAAAAAKSSyVaHQVtGLGWZ2L9xtlGhFaay');
+
+
+            $recaptcha = new ReCaptcha($ReCaptchaKeys->getSecret());
             $resp = $recaptcha->verify($request->request->get('g-recaptcha-response'), $request->getClientIp());
 
             if ( $resp->isSuccess() ){
@@ -56,7 +60,7 @@ class ContactController extends Controller
 
         return $this->render('contact/contact.html.twig',[
             'empty_key'=>'empty',
-            'form'=> $form->createView(),
+            'form'=> $form->createView()
         ]);
     }
 }

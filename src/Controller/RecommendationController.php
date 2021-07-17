@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\RedirectToRoute;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use ReCaptcha\ReCaptcha;
+use App\Service\ReCaptchaKeys;
 
 /**
  * Class RecommendationController
@@ -51,7 +52,7 @@ class RecommendationController extends Controller
      * @return Response
      * @Route("/home/new_recommendation",methods={"POST"})
      */
-    public function create(Request $request,EntityManagerInterface $entityManager): Response
+    public function create(ReCaptchaKeys $ReCaptchaKeys, Request $request,EntityManagerInterface $entityManager): Response
     {
         //Create new formular for Recomendation $request
         $recommendation = new Recommendation();
@@ -61,7 +62,7 @@ class RecommendationController extends Controller
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
                 //Check ReChaptcha v2
-                $recaptcha = new ReCaptcha('6Ldb1JUbAAAAAKSSyVaHQVtGLGWZ2L9xtlGhFaay');
+                $recaptcha = new ReCaptcha($ReCaptchaKeys->getSecret());
                 $resp = $recaptcha->verify($request->request->get('g-recaptcha-response'), $request->getClientIp());
 
                 if ( $resp->isSuccess() ){

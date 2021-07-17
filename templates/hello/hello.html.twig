@@ -94,7 +94,7 @@
                 {{ form_start(form, {'action': path('app_recommendation_create'), 'method': 'POST'}) }}
                     {{ form_row(form.Name) }}
                     {{ form_row(form.Recommendation) }}
-                    {{ recaptchaForm.recaptcha("6Ldb1JUbAAAAAJgn9Cy0LtgvdLF6c-dJSjolDvA0") }}
+                    {{ recaptchaForm.recaptcha() }}
                     {{ form_row(form.Update) }}
                 {{ form_end(form) }}
             {% endif %}

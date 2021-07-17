@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class ConfigController extends AbstractController
 {
     /**
-     * @Route("/config", name="config")
+     * @Route("/config",name="app_config")
      * @IsGranted("ROLE_ADMIN")
      */
     public function index(): Response
