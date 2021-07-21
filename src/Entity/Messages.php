@@ -51,6 +51,12 @@ class Messages
     private $date;
 
     /**
+     * @ORM\Column(type="integer")
+     * @var int
+     */
+    private $status;
+
+    /**
      * @ORM\Column(type="boolean")
      * @var boolean
      */
@@ -139,5 +145,21 @@ class Messages
     public function getPersonalData(): ?string
     {
         return $this->PersonalData;
+    }
+
+    /**
+     * @param int
+     */
+    public function setStatus(int $status)
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * @return int
+     */
+    public function getStatus(): ?int
+    {
+        return $this->status;
     }
 }

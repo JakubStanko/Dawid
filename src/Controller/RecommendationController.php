@@ -21,16 +21,16 @@ use App\Service\ReCaptchaKeys;
 class RecommendationController extends Controller
 {
     /**
+     * @Route("/home")
      * @param EntityManagerInterface $entityManager
      * @return Response Response
-     * @Route("/home")
      */
     public function list(EntityManagerInterface $entityManager): Response
     {
         //Catch data from DataBase
         $repository = $entityManager->getRepository(Recommendation::class);
         $comments = $repository->findby(
-            array(),
+            array('status'=>'0'),
             array('id' => 'DESC'),
             5,
             0
@@ -47,10 +47,10 @@ class RecommendationController extends Controller
     }
 
     /**
+     * @Route("/home/new_recommendation",methods={"POST"})
      * @param EntityManagerInterface $entityManager
      * @param Request $request
      * @return Response
-     * @Route("/home/new_recommendation",methods={"POST"})
      */
     public function create(ReCaptchaKeys $ReCaptchaKeys, Request $request,EntityManagerInterface $entityManager): Response
     {

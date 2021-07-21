@@ -23,13 +23,19 @@ $(document).ready(function(){
         const lastScrollTop = 450;
         const scrollTop = $(this).scrollTop();
         const upButton = $('.toTheTop');
+        const navBar = $('.head-container');
+        const cutonMenu = $('.custom-nav');
 
         if (scrollTop > lastScrollTop) {
             // downscroll code
             upButton.stop(true, true).show();
+            navBar.css({position: 'fixed', top: '0px'});
+            cutonMenu.css({position: 'fixed', top: '60px'});
         } else {
             // upscroll code
             upButton.stop(true, true).hide();
+            navBar.css({position: 'static', top: '0px'});
+            cutonMenu.css({position: 'static', top: '0px'});
         }
     });
 

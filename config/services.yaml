@@ -32,5 +32,8 @@ services:
         public: true
         arguments: ['%env(string:GOOGLE_RECAPTCHA_SECRET)%','%env(string:GOOGLE_RECAPTCHA_SITE_KEY)%']
 
+    App\Service\UploadFile:
+        public: true
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

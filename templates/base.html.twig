@@ -17,7 +17,6 @@
             {{ encore_entry_script_tags('app') }}
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-            <script src="js/jqactions.js"></script>
         {% endblock %}
     </head>
     <body>
@@ -30,6 +29,7 @@
                     <button class="main-button" onclick="location.href='{{ path('app_services_main') }}'">Leistungen</button>
                     <button class="main-button" onclick="location.href='{{ path('app_contact_add') }}'">Kontakt</button>
                     {% if is_granted('ROLE_ADMIN') %}
+                        <button class="main-button" onclick="location.href='{{ path('app_config') }}'">Config</button>
                         <button class="main-button" onclick="location.href='{{ path('app_logout') }}'">Logout</button>
                     {% endif %}
                 </div>
@@ -40,6 +40,7 @@
                 <button class="main-button" onclick="location.href='{{ path('app_services_main') }}'">Leistungen</button><br />
                 <button class="main-button" onclick="location.href='{{ path('app_contact_add') }}'">Kontakt</button>
                 {% if is_granted('ROLE_ADMIN') %}
+                    <button class="main-button" onclick="location.href='{{ path('app_config') }}'">Config</button>
                     <button class="main-button" onclick="location.href='{{ path('app_logout') }}'">Logout</button>
                 {% endif %}
             </div>

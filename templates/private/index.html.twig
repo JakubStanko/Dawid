@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Private Messages{% endblock %}
+
+{% block body %}
+<div class="body-container">
+    <div class="services-container">
+        <div class="content-title">
+            There you can find you all privates messages from visitors.
+        </div>
+        {% if messages is defined %}
+
+            {% for message in messages %}
+                <form method="POST" action="{{ path('app_privateapp_private_hide',{'id':message.id}) }}">
+                    <div class="message-position">
+                        <span class="message-date">
+                            {{ message.date|date('Y-m-d H:m')  }} [#{{message.id}}]
+                        </span>
+                        <div class="message-person">
+                            Name: {{ message.name}}  <br />
+                            Email: <a href="mailto:{{ message.email }}" class="message-email">{{ message.email }}</a>
+                        </div>
+                        <div class="message-value">
+                            <b>Message:</b>
+                            <div class="config-message-value">
+                                {{ message.message }}
+                            </div>
+                        </div>
+                        <button type="submit" class="main-button" style="width: 150px;">Hide message</button>
+                        <!--<button  class="main-button" onclick="location.href='{{ path('app_privateapp_private_hide',{'id':message.id})}}'" style="width: 150px;">Hide message</button>-->
+                    </div>
+                </form>
+            {% else %}
+
+            {% endfor %}
+        {% else %}
+
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

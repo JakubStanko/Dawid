@@ -40,6 +40,13 @@ class Recommendation
      */
     private $Date;
 
+    /**
+     * @ORM\Column(type="integer")
+     * @var int
+     */
+    private $status;
+
+
     public function __construct()
     {
         $this->Date = new \DateTime();
@@ -90,5 +97,21 @@ class Recommendation
     public function getDate(): ?\DateTime
     {
         return $this->Date;
+    }
+
+    /**
+     * @param int
+     */
+    public function setStatus(int $status)
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * @return int
+     */
+    public function getStatus(): ?int
+    {
+        return $this->status;
     }
 }

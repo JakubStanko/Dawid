@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Public Recommendation{% endblock %}
+
+{% block body %}
+<div class="body-container">
+    <div class="services-container">
+        <div class="content-title">
+            There you can find you all public messages from visitors.
+        </div>
+        {% if messages is defined %}
+
+            {% for message in messages %}
+                <form method="POST" action="{{ path('app_publicapp_public_hide',{'id':message.id}) }}">
+                    <div class="message-position">
+                        <span class="message-date">
+                            {{ message.date|date('Y-m-d H:m')  }} [#{{message.id}}]
+                        </span>
+                        <div class="message-person">
+                            Name: {{ message.name}}  <br />
+                        </div>
+                        <div class="message-value">
+                            <b>Message:</b>
+                            <div class="config-message-value">
+                                {{ message.recommendation }}
+                            </div>
+                        </div>
+                        <button type="submit" class="main-button" style="width: 150px;">Hide message</button>
+                    </div>
+                </form>
+            {% else %}
+
+            {% endfor %}
+        {% else %}
+
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

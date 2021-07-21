@@ -39,6 +39,7 @@ input {
     border-radius: $containerRadius;
     padding: $containerPadding;
     height: 60px;
+    z-index: 99;
 }
 
 .head-nav{
@@ -54,6 +55,7 @@ input {
     width: 100%;
     margin-top: 0px;
     padding: 5px;
+    z-index: 99;
     .main-button {
         width: 100%;
         margin-left: 0px;
@@ -111,9 +113,9 @@ input {
 
 .main-button{
     border-radius: $buttonRadius;
-    color: $textColor;
+    color: $textColor!important;
     margin: $buttonMargi;
-    background-color: $buttonColor;
+    background-color: $buttonColor!important;
     width: 100px;
     height: 40px;
     border: 0px;
@@ -121,10 +123,10 @@ input {
 }
 
 .main-button:hover{
-    background-color: $buttonHoverColor;
+    background-color: $buttonHoverColor!important;
 }
 
-.welcome-container,.offer-container,.position-container,.recommendation-container,.contact-container,.services-container{
+.welcome-container,.offer-container,.position-container,.message-container,.contact-container,.services-container{
     margin-left: auto;
     margin-right: auto;
     padding: 30px;
@@ -135,21 +137,37 @@ input {
     display: inline-block;
 }
 
-.content-title,.recommendation-person,.recommendation-date{
+.content-title,.message-person,.message-date{
     font-family: $fontSansSC;
     font-weight: bold;
     color: $contentTextColor;
 }
 
-.recommendation-date{
+.message-date{
     float: right;
     margin-right: 20px;
 }
 
-.content-text,.recommendation-value{
+.content-text,.message-value{
     font-family: $fontSansSC;
     color: $contentTextColor;
     margin-bottom: 15px;
+}
+
+.config-message-value{
+    background-color: #e9e9e9;
+    min-height: 100px;
+    color: #3a3a3a;
+    border-radius: $buttonRadius;
+    padding: 8px;
+}
+
+.message-email{
+    color: gray!important;
+}
+
+.message-email:hover{
+    color: red!important;
 }
 
 .content-frame{
@@ -166,8 +184,8 @@ input {
     margin-right: auto;
 }
 
-.hello-icon{
-    background-image: url("../../public/icons/ico-hello.png");
+.first-icon{
+    background-image: url("../../public/icons/ico-first.png");
     background-position: center;
     background-repeat: no-repeat;
     height: 64px;
@@ -229,13 +247,57 @@ input {
     margin: 2px;
 }
 
-.work-icon{
-    background-image: url("../../public/icons/ico-work.png");
+.second-icon{
+    background-image: url("../../public/icons/ico-second.png");
     background-position: center;
     background-repeat: no-repeat;
     height: 64px;
     width: 64px;
     display: block;
+}
+
+.third-icon{
+    background-image: url("../../public/icons/ico-third.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 64px;
+    width: 64px;
+    display: block;
+}
+
+.confirm-ico{
+	background: url("../../public/icons/ico-confirm.png");
+}
+
+.reject-ico{
+	background: url("../../public/icons/ico-reject.png");
+}
+
+.config-icons{
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 32px;
+    display: block;
+    position: absolute;
+    top: 5px!important;
+    right: 5px;
+}
+
+.message-icon{
+    background-image: url("../../public/icons/ico-message.png");
+}
+
+.text-icon{
+    background-image: url("../../public/icons/ico-text.png");
+}
+
+.add-icon{
+    background-image: url("../../public/icons/ico-add.png");
+}
+
+.edit-icon{
+    background-image: url("../../public/icons/ico-edit.png");
 }
 
 .picture-container{
@@ -247,15 +309,22 @@ input {
     border-radius: $pictureRadius;
 }
 
-.clean-pic{
-    background-image: url("../../public/pictures/pic-clean.jpeg");
+.first-pic{
+    background-image: url("../../public/pictures/pic-first.jpg");
     background-position: center;
     background-repeat: no-repeat;
     display: block;
 }
 
-.hands-pic{
-    background-image: url("../../public/pictures/pic-hands.jpg");
+.second-pic{
+    background-image: url("../../public/pictures/pic-second.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.third-pic{
+    background-image: url("../../public/pictures/pic-third.jpg");
     background-position: center;
     background-repeat: no-repeat;
     display: block;
@@ -334,7 +403,7 @@ input {
     box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.75);
 }
 
-.recommendation-position{
+.message-position{
     border: 1px solid $frameColor;
     width: 100%;
     padding: 10px;
@@ -363,14 +432,23 @@ line{
     cursor: pointer;
 }
 
+.flash-container{
+    padding: 10px;
+    border-radius: .25rem;
+}
+
 .flash-success{
     color: #2e7d32;
+    border: 1px solid #2e7d32;
+    background-color: #dcedc8;
     font-family: $fontSansSC;
     font-weight: bold;
 }
 
 .flash-reCaptcha,.flash-error{
     color: #dd2c00;
+    border: 1px solid #dd2c00;
+    background-color: #ffcdd2;
     font-family: $fontSansSC;
     font-weight: bold;
 }
@@ -378,4 +456,112 @@ line{
 textarea {
     resize: none!important;
     height: 150px!important;
+}
+
+.config-button{
+    position: relative;
+    background-color: $buttonColor;
+    width: 220px;
+    height: 100px;
+    padding: 8px;
+    border-radius: $buttonRadius;
+    margin: 15px;
+}
+.config-button:hover{
+    background-color: $buttonHoverColor;
+}
+
+button{
+    border: 0px !important;
+    cursor: pointer;
+}
+
+.dbtn{
+    line-height: 40px;
+    text-align: center;
+}
+button:focus{
+    outline: 0px !important;
+}
+
+#actImg {
+    position: fixed;
+    z-index: 100;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0);
+    margin: 0!important;
+}
+
+#actImg.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+label {
+    margin: 0px!important;
+    margin-top: 10px!important;
+}
+
+small {
+    margin-top: -5px!important;
+    margin-bottom: 5px!important;
+}
+
+/*Alerts*/
+.alert-con{
+	display: none;
+	font-family: arial;
+	position: fixed;
+	bottom: 25px;
+	right: 45px;
+	height: 80px;
+	width: 400px;
+	border: 1px solid gray;
+    border-radius: 8px;
+	z-index: 99999;
+}
+
+.result-correct{
+	background-color: #4caf50!important;
+}
+
+.result-wrong{
+	background-color: #f44336!important;
+}
+
+.alert-header{
+	position: relative;
+	float: left;
+	background-color: transparent;
+	height: 100%;
+	width: 68px;
+	color: white;
+}
+
+.alert-body{
+	float: right;
+	background-color: white;
+	height: 78px;
+	width: 302px;
+	color: #546e7a;
+	padding: 5px 5px 5px 25px;
+	font-size: 14px;
+}
+
+.alert-title{
+	font-size: 14px;
+	margin-top: 18px;
+}
+
+.alert-message{
+	font-size: 13px;
+}
+
+.alert-icons{
+	display: block;
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	width: 32px;
+	height: 32px;
 }
