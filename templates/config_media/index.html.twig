@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Config media{% endblock %}
+
+{% block body %}
+<div class="body-container">
+    <div class="services-container">
+            <div class="content-title">
+                There you can <b>edit</b> contact data.
+            </div>
+            <br />
+            <div class="content-title">
+                <b>Instruction:</b>
+            </div>
+            <div class="content-text">
+                if the field is left blank, it will not be shown in footer section.
+            </div>
+            {% for label, messages in app.flashes(['success']) %}
+                {% for message in messages %}
+                    <div class="flash-container flash-{{ label }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for media in mediaData %}
+                {% if form is defined %}
+                    {{ form_start(form, {'action': path('app_config_media'), 'method': 'POST'}) }}
+                        {{ form_label(form.facebook) }}
+                        {{ form_help(form.facebook) }}
+                        {{ form_widget(form.facebook, {'value':media.facebook}) }}
+                        {{ form_label(form.twitter) }}
+                        {{ form_help(form.twitter) }}
+                        {{ form_widget(form.twitter, {'value':media.twitter}) }}
+                        {{ form_label(form.instagram) }}
+                        {{ form_help(form.instagram) }}
+                        {{ form_widget(form.instagram, {'value':media.instagram}) }}
+                        {{ form_row(form.Update) }}
+                    {{ form_end(form) }}
+                {% elseif form is not defined %}
+                    <div class="content-text">
+                        No form is defined there.
+                    </div>
+                {% endif %}
+            {% else %}
+                    <div class="content-text">
+                        Not found media data.
+                    </div>
+            {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class PersonallDataController extends AbstractController
 {
     /**
-     * @Route("personal_data")
+     * @Route("personal_data",name="app_presonal_data")
      * @return Response
      */
     public function main(): Response

@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('uploading') }}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+{% endblock %}
+{% block title %}
+    Homepage configurations
+{% endblock %}
+
+{% block body %}
+<div class="body-container">
+    <div class="services-container">
+        <div class="content-title">
+            Edit {{ block_name }} block
+        </div>
+        <div class="content-text">
+            There you can edit values in {{ block_name }} block on Homepage
+        </div>
+            {% for label, messages in app.flashes(['success', 'error']) %}
+                {% for message in messages %}
+                    <div class="flash-container flash-{{ label }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for partValue in blockData %}
+                {% if form is defined %}
+                    {{ form_start(form, {'action': path('app_config_home_edit',{'block_name': block_name}), 'method': 'POST'}) }}
+                        {{ form_label(form.imageTitle) }}
+                        {{ form_help(form.imageTitle) }}
+                        {{ form_widget(form.imageTitle, {'value' :  partValue.imageTitle} ) }}
+                        {{ form_label(form.textTitle) }}
+                        {{ form_help(form.textTitle) }}
+                        {{ form_widget(form.textTitle, {'value' :  partValue.textTitle}) }}
+                        {{ form_label(form.textValue) }}
+                        {{ form_help(form.textValue) }}
+                        {{ form_widget(form.textValue, {'value' :  partValue.TextValue}) }}
+                        {{ form_label(form.visibility) }}
+                        {{ form_help(form.visibility) }}
+                        {{ form_widget(form.visibility, {'selected' :  partValue.visibility}) }}
+                        {{ form_row(form.Update) }}
+                    {{ form_end(form) }}
+                {% elseif form is not defined %}
+                    <div class="content-text">
+                        No form is defined there.
+                    </div>
+                {% endif %}
+            {% else %}
+                {% if form is defined %}
+                    {{ form_start(form, {'action': path('app_config_home_edit',{'block_name': block_name}), 'method': 'POST'}) }}
+                        {{ form_row(form.imageTitle) }}
+                        {{ form_row(form.textTitle) }}
+                        {{ form_row(form.textValue) }}
+                        {{ form_widget(form.visibility) }}
+                        {{ form_row(form.Update) }}
+                    {{ form_end(form) }}
+                {% elseif form is not defined %}
+                    <div class="content-text">
+                        No form is defined there.
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <br />
+            <div class="required">
+                Upload {{ block_name }} block image.
+            </div>
+            <small class="form-text text-muted">
+                - Click <b>Upload</b> button to select new image. Only <b>.jpg</b> format.<br />
+                - Click <b>Show</b> button to show actualy image.
+            </small>
+            <label>
+                <input type="file" id="PictureJpgFile" style="display:none;" data-file-type="jpg">
+                <div class="main-button dbtn">Upload</div>
+            </label>
+            <label>
+                <div class="main-button dbtn" id="show-image-button" data-file-type="jpg">Show</div>
+            </label>
+            <line></line>
+            <div class="required">
+                Upload {{ block_name }} block icon.
+            </div>
+            <small class="form-text text-muted">
+                - Click <b>Upload</b> button to select block icon. Only <b>.png</b> format.<br />
+                - Click <b>Show</b> button to show actualy icon.<br />
+                - We recommend to use 64x64px icons. A lot of icons you can find right <a href="https://www.iconsdb.com/" target="_blank" class="message-email">there.</a>
+            </small>
+            <label>
+                <input type="file" id="PicturePngFile" style="display:none;" data-file-type="png">
+                <div class="main-button dbtn">Upload</div>
+            </label>
+            <label>
+                <div class="main-button dbtn" id="show-image-button" data-file-type="png">Show</div>
+            </label>
+    </div>
+</div>
+<div class="dark-background" style="position: fixed; top: 0; display: none;"></div>
+{% endblock %}

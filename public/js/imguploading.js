@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    var phpSaveUrl = Routing.generate('save_image_route');
+    var phpSaveUrl = Routing.generate('yaml_save_image_route');
 
 	function alert_correct_adv(message,class_id) {
 		var allert = '<div class="alert-con result-correct '+class_id+' alert-success container-shadow">'+

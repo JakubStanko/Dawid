@@ -21,32 +21,6 @@ use App\Service\ReCaptchaKeys;
 class RecommendationController extends Controller
 {
     /**
-     * @Route("/home")
-     * @param EntityManagerInterface $entityManager
-     * @return Response Response
-     */
-    public function list(EntityManagerInterface $entityManager): Response
-    {
-        //Catch data from DataBase
-        $repository = $entityManager->getRepository(Recommendation::class);
-        $comments = $repository->findby(
-            array('status'=>'0'),
-            array('id' => 'DESC'),
-            5,
-            0
-        );
-
-        //Create new formular for Recomendation
-        $recommendation = new Recommendation();
-        $form = $this->createForm(RecommendationType::class, $recommendation);
-
-        return $this->render('hello/hello.html.twig',[
-            'comments'=>$comments,
-            'form'=> $form->createView(),
-        ]);
-    }
-
-    /**
      * @Route("/home/new_recommendation",methods={"POST"})
      * @param EntityManagerInterface $entityManager
      * @param Request $request
@@ -92,6 +66,6 @@ class RecommendationController extends Controller
             }
         }
 
-        return $this->redirectToRoute('app_recommendation_list');
+        return $this->redirectToRoute('/');
     }
 }

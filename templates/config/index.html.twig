@@ -19,11 +19,11 @@
                 There you can open and delete private and public recommendation.
             </div>
             <div class="row">
-                <button class="config-button" onclick="location.href='{{ path('app_privateapp_private_list') }}'">
+                <button class="config-button" onclick="location.href='{{ path('app_config_private_list') }}'">
                     <span class="main-text">Privte messages</span>
                     <i class="config-icons message-icon"></i>
                 </button>
-                <button class="config-button" onclick="location.href='{{ path('app_publicapp_public_list') }}'">
+                <button class="config-button" onclick="location.href='{{ path('app_config_recommendation_list') }}'">
                     <span class="main-text">Public recommendation</span>
                     <i class="config-icons message-icon"></i>
                 </button>
@@ -35,15 +35,15 @@
                 There you can edit textblock and images on the first page.
             </div>
             <div class="row">
-                <button class="config-button" onclick="location.href='{{ path('home_blockapp_homeblock_index',{'block_name':'first'}) }}'">
+                <button class="config-button" onclick="location.href='{{ path('app_config_home_index',{'block_name':'first'}) }}'">
                     <span class="main-text">First block</span>
                     <i class="config-icons text-icon"></i>
                 </button>
-                <button class="config-button" onclick="location.href='{{ path('home_blockapp_homeblock_index',{'block_name':'second'}) }}'">
+                <button class="config-button" onclick="location.href='{{ path('app_config_home_index',{'block_name':'second'}) }}'">
                     <span class="main-text">Second block</span>
                     <i class="config-icons text-icon"></i>
                 </button>
-                <button class="config-button" onclick="location.href='{{ path('home_blockapp_homeblock_index',{'block_name':'third'}) }}'">
+                <button class="config-button" onclick="location.href='{{ path('app_config_home_index',{'block_name':'third'}) }}'">
                     <span class="main-text">Third block</span>
                     <i class="config-icons text-icon"></i>
                 </button>
@@ -55,11 +55,11 @@
                 There you can edit textblock on the services page.
             </div>
             <div class="row">
-                <button class="config-button" onclick="location.href='{{ path('service_create') }}'">
+                <button class="config-button" onclick="location.href='{{ path('app_config_service_create') }}'">
                     <span class="main-text">Add service block</span>
                     <i class="config-icons add-icon"></i>
                 </button>
-                <button class="config-button" onclick="location.href='{{ path('service_list') }}'">
+                <button class="config-button" onclick="location.href='{{ path('app_config_service_list') }}'">
                     <span class="main-text">Service block list</span>
                     <i class="config-icons edit-icon"></i>
                 </button>
@@ -71,8 +71,32 @@
                 There you can edit contact data on the contact page.
             </div>
             <div class="row">
-                <button class="config-button" onclick="location.href='/config/edit_contact'">
+                <button class="config-button" onclick="location.href='{{ path('app_config_contact_index') }}'">
                     <span class="main-text">Edit contact data</span>
+                    <i class="config-icons edit-icon"></i>
+                </button>
+            </div>
+            <div class="content-title">
+                Media data configuration
+            </div>
+            <div class="content-text">
+                There you can edit media data - links for fanpages.
+            </div>
+            <div class="row">
+                <button class="config-button" onclick="location.href='{{ path('app_config_media') }}'">
+                    <span class="main-text">Edit media data</span>
+                    <i class="config-icons edit-icon"></i>
+                </button>
+            </div>
+            <div class="content-title">
+                Header data configuration
+            </div>
+            <div class="content-text">
+                There you can edit header data - header title and description.
+            </div>
+            <div class="row">
+                <button class="config-button" onclick="location.href='{{ path('app_config_header') }}'">
+                    <span class="main-text">Edit header data</span>
                     <i class="config-icons edit-icon"></i>
                 </button>
             </div>
@@ -83,7 +107,7 @@
                 There you can edit admin data - login and password.
             </div>
             <div class="row">
-                <button class="config-button" onclick="location.href='/config/edit_admin'">
+                <button class="config-button" onclick="location.href='{{ path('app_config_user_edit') }}'">
                     <span class="main-text">Edit admin data</span>
                     <i class="config-icons edit-icon"></i>
                 </button>

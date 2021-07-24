@@ -44,7 +44,7 @@ class Recommendation
      * @ORM\Column(type="integer")
      * @var int
      */
-    private $status;
+    private $status = 0;
 
 
     public function __construct()

@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit contact data{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('blockservice') }}
+    {{ parent() }}
+    {{ encore_entry_script_tags('uploading') }}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+{% endblock %}
+{% block body %}
+<div class="body-container">
+    <div class="services-container">
+            <div class="content-title">
+                There you can <b>edit</b> contact data.
+            </div>
+            <br />
+            <div class="content-title">
+                <b>Instruction:</b>
+            </div>
+            <div class="content-text">
+                if the field is left blank, it will not be shown in imprint page.
+            </div>
+            <line></line>
+                <div class="required">
+                    Upload contact icon.
+                </div>
+                <small class="form-text text-muted">
+                    - Click <b>Upload</b> button to select block icon. Only <b>.png</b> format.<br />
+                    - Click <b>Show</b> button to show actualy icon.<br />
+                    - We recommend to use 64x64px icons. A lot of icons you can find right <a href="https://www.iconsdb.com/" target="_blank" class="message-email">there.</a>
+                </small>
+                <label>
+                    <input type="file" id="PicturePngFile" style="display:none;" data-file-type="png">
+                    <div class="main-button dbtn">Upload</div>
+                </label>
+                <label>
+                    <div class="main-button dbtn" id="show-image-button" data-file-type="png">Show</div>
+                </label>
+            <line></line>
+            {% for label, messages in app.flashes(['success']) %}
+                {% for message in messages %}
+                    <div class="flash-container flash-{{ label }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for rowValue in contactData %}
+                {% if form is defined %}
+                    {{ form_start(form, {'action': path('app_config_contact_index',{'id' : rowValue.Id}), 'method': 'POST'}) }}
+                        {{ form_label(form.companyName) }}
+                        {{ form_help(form.companyName) }}
+                        {{ form_widget(form.companyName, {'value':rowValue.companyName}) }}
+                        {{ form_label(form.postCode) }}
+                        {{ form_help(form.postCode) }}
+                        {{ form_widget(form.postCode, {'value':rowValue.postCode}) }}
+                        {{ form_label(form.city) }}
+                        {{ form_help(form.city) }}
+                        {{ form_widget(form.city, {'value':rowValue.city}) }}
+                        {{ form_label(form.street) }}
+                        {{ form_help(form.street) }}
+                        {{ form_widget(form.street, {'value':rowValue.street}) }}
+                        {{ form_label(form.phone) }}
+                        {{ form_help(form.phone) }}
+                        {{ form_widget(form.phone, {'value':rowValue.phone}) }}
+                        {{ form_label(form.email) }}
+                        {{ form_help(form.email) }}
+                        {{ form_widget(form.email, {'value':rowValue.email}) }}
+                        {{ form_label(form.vat) }}
+                        {{ form_help(form.vat) }}
+                        {{ form_widget(form.vat, {'value':rowValue.vat}) }}
+                        {{ form_label(form.website) }}
+                        {{ form_help(form.website) }}
+                        {{ form_widget(form.website, {'value':rowValue.website}) }}
+                        {{ form_label(form.brn) }}
+                        {{ form_help(form.brn) }}
+                        {{ form_widget(form.brn, {'value':rowValue.brn}) }}
+                        {{ form_label(form.owner) }}
+                        {{ form_help(form.owner) }}
+                        {{ form_widget(form.owner, {'value':rowValue.owner}) }}
+
+                        {{ form_row(form.Update) }}
+                    {{ form_end(form) }}
+                {% elseif form is not defined %}
+                    <div class="content-text">
+                        No form is defined there.
+                    </div>
+                {% endif %}
+            {% else %}
+                    <div class="content-text">
+                        Not found contact data.
+                    </div>
+            {% endfor %}
+    </div>
+</div>
+<div class="dark-background" style="position: fixed; top: 0; display: none;"></div>
+{% endblock %}

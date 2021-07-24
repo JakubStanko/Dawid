@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Service block list{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('blockservice') }}
+    {{ parent() }}
+    {{ encore_entry_script_tags('uploading') }}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+{% endblock %}
+{% block body %}
+<div class="body-container">
+    <div class="services-container">
+        <div class="content-title">
+            Service list
+        </div>
+        <div class="content-text">
+            There you can select service row and edit/delete it.
+        </div>
+        <line></line>
+            <div class="required">
+                Upload service list icon.
+            </div>
+            <small class="form-text text-muted">
+                - Click <b>Upload</b> button to select block icon. Only <b>.png</b> format.<br />
+                - Click <b>Show</b> button to show actualy icon.<br />
+                - We recommend to use 64x64px icons. A lot of icons you can find right <a href="https://www.iconsdb.com/" target="_blank" class="message-email">there.</a>
+            </small>
+            <label>
+                <input type="file" id="PicturePngFile" style="display:none;" data-file-type="png">
+                <div class="main-button dbtn">Upload</div>
+            </label>
+            <label>
+                <div class="main-button dbtn" id="show-image-button" data-file-type="png">Show</div>
+            </label>
+        <line></line>
+        {% for serviceRow in serviceData %}
+            <div class="service-position">
+                <div class="content-title">
+                    <i class="okay-icon custom-okay-icon"></i>{{ serviceRow.serviceTitle}}
+                </div>
+                <div class="content-text content-frame">
+                    {{ serviceRow.serviceValue}}
+                </div>
+                <div class="service-options-container">
+                {% if serviceRow.visibility == 0 %}
+                    <div class="service-option-row">
+                        <span class="service-menu-option" style="background-color: #3299CC;" id="hide-service-button" data-service-id="{{ serviceRow.id }}"></span>
+                        <span class="service-menu-title" id="option-hide">Hide service</span>
+                    </div>
+                {% elseif serviceRow.visibility == 1 %}
+                    <div class="service-option-row">
+                        <span class="service-menu-option" style="background-color: #236B8E;" id="unhide-service-button" data-service-id="{{ serviceRow.id }}"></span>
+                        <span class="service-menu-title" id="option-unhide">Unhide service</span>
+                    </div>
+                {% endif %}
+                    <div class="service-option-row">
+                        <span class="service-menu-option" style="background-color: #00c853;" onclick="location.href='{{ path('app_config_service_edit',{'id':serviceRow.id}) }}'"></span>
+                        <span class="service-menu-title" id="option-edit">Edit service</span>
+                    </div>
+                    <div class="service-option-row">
+                        <span class="service-menu-option" style="background-color: #dd2c00;;" id="delete-service-button" data-service-id="{{ serviceRow.id }}"></span>
+                        <span class="service-menu-title" id="option-delete">Delete service</span>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="content-text">
+                No services are created yet. You can create some service → <a class="message-email" href="{{ path('app_config_service_create') }}">right there</a>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="confirm-container">
+        <div class="confirm-container-header">
+            Deleting confirmation
+        </div>
+        <div class="confirm-container-body">
+            <button id="confirm-button" class="main-button" data-service-id="">Confirm</button>
+            <button id="reject-button" class="main-button">Reject</button>
+        </div>
+    </div>
+</div>
+<div class="dark-background" style="position: fixed; top: 0; display: none;"></div>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+{% import "form/recaptcha_form.html.twig" as recaptchaForm %}
+
+{% block body %}
+    <div class="body-container">
+        {% for blockRow in blocks %}
+            {% if blockRow.visibility == 0 %}
+                <div class="welcome-container">
+                    <div class="icon-container">
+                        <i class="{{ blockRow.blockName }}-icon"></i>
+                    </div>
+                    <div class="welcome-content">
+                        <div class="content-title">
+                            {{ blockRow.textTitle }}
+                        </div>
+                        <div class="content-text">
+                            {{ blockRow.textValue }}
+                        </div>
+                    </div>
+                </div>
+                <div class="picture-container">
+                    <i class="{{ blockRow.blockName }}-pic pc-pic d-none d-lg-inline-block"></i>
+                    <i class="{{ blockRow.blockName }}-pic ph-pic d-inline-block d-lg-none"></i>
+                    <div class="dark-background-container">
+                        <div class="dark-background"></div>
+                        <div class="dark-background-title">
+                            {{ blockRow.imageTitle }}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% else %}
+
+        {% endfor %}
+        <div class="message-container">
+            {% for recommendation in comments %}
+                <div class="message-position">
+                    <div class="message-person">
+                        {{ recommendation.name }}
+                        <span class="message-date">
+                            {{ recommendation.date|date('Y-m-d') }}
+                        </span>
+                    </div>
+                    <div class="message-value">
+                        {{ recommendation.recommendation }}
+                    </div>
+                </div>
+            {% else %}
+                <div class="message-position">
+                    <div class="message-person">
+                        Robot
+                    </div>
+                    <div class="message-value">
+                        keine Meinung.
+                    </div>
+                </div>
+            {% endfor %}
+            {% if form is defined %}
+                {% for label, messages in app.flashes(['success', 'reCaptcha', 'error']) %}
+                    {% for message in messages %}
+                        <div class="flash-{{ label }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {{ form_start(form, {'action': path('app_recommendation_create'), 'method': 'POST'}) }}
+                    {{ form_row(form.Name) }}
+                    {{ form_row(form.Recommendation) }}
+                    {{ recaptchaForm.recaptcha() }}
+                    {{ form_row(form.Update) }}
+                {{ form_end(form) }}
+            {% endif %}
+        </div>
+        <div class="position-container">
+            {% for contactData in contact %}
+                <div class="content-title">
+                    Finden Sie uns:
+                </div>
+                <iframe scrolling="no" crossorigin="anonymous" marginheight="0" marginwidth="0" id="gmap_canvas" src="https://maps.google.com/maps?width=302&amp;height=293&amp;hl=en&amp;q={{ contactData.street }}%20{{ contactData.city }}+()&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" class="google-map container-shadow" width="520" height="400" frameborder="0"></iframe>
+                <div class="content-title">
+                    {{ contactData.companyName }}
+                </div>
+                <div class="content-text">
+                    {{ contactData.postCode }},{{ contactData.city }}<br />
+                    {{ contactData.street }}
+                </div>
+            {% else %}
+
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

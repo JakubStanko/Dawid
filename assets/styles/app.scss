@@ -152,6 +152,7 @@ input {
     font-family: $fontSansSC;
     color: $contentTextColor;
     margin-bottom: 15px;
+    word-wrap: break-word;
 }
 
 .config-message-value{
@@ -164,6 +165,7 @@ input {
 
 .message-email{
     color: gray!important;
+    cursor: pointer;
 }
 
 .message-email:hover{
@@ -202,8 +204,8 @@ input {
     display: block;
 }
 
-.wash-icon{
-    background-image: url("../../public/icons/ico-wash.png");
+.list-icon{
+    background-image: url("../../public/icons/ico-list.png");
     background-position: center;
     background-repeat: no-repeat;
     height: 64px;
@@ -271,6 +273,36 @@ input {
 
 .reject-ico{
 	background: url("../../public/icons/ico-reject.png");
+}
+
+.facebook-ico{
+    background-image: url("../../public/icons/ico-facebook.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px!important;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.twitter-ico{
+    background-image: url("../../public/icons/ico-twitter.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px!important;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.instagram-ico{
+    background-image: url("../../public/icons/ico-instagram.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px!important;
+    display: inline-block;
+    cursor: pointer;
 }
 
 .config-icons{
@@ -497,6 +529,38 @@ button:focus{
     transform: translate(-50%, -50%) scale(1);
 }
 
+.confirm-container{
+    position: fixed;
+    z-index: 100;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0);
+    margin: 0!important;
+    width: 240px;
+    border: 1px solid $HBContainerColor;;
+    border-radius: 8px;
+}
+
+.confirm-container.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.confirm-container-header{
+    padding: 8px;
+    background-color: $HBContainerColor;
+    color: $textColor;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.confirm-container-body{
+    padding: 8px;
+    background-color: white;
+    text-align: center;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
 label {
     margin: 0px!important;
     margin-top: 10px!important;
@@ -507,15 +571,64 @@ small {
     margin-bottom: 5px!important;
 }
 
+.service-position{
+    position: relative;
+    margin-top: -15px;
+}
+
+.service-options-container{
+    text-align: center;
+    position: relative;
+    top: -20px;
+    margin-left: auto;
+    width: 150px;
+    height: 24px;
+    border-radius: 8px;
+    border: 1px solid #cbcbcb;
+    background-color: white;
+}
+
+.service-menu-option{
+    display: inline-block;
+    height: 20px;
+    width: 25px;
+    margin-top: 1px;
+    border: 0px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.service-menu-option:hover{
+    opacity: 0.7;
+}
+
+.service-option-row{
+    position: relative;
+    display: inline-block;
+}
+
+.service-menu-title{
+    display: none;
+    position: absolute;
+    width: 150px;
+    padding: 8px;
+    border: 0px;
+    background-color: black;
+    border-radius: 3px;
+    color: white;
+    opacity: 0.7;
+    top: 25px;
+    left: -55px;
+    z-index: 99;
+}
+
 /*Alerts*/
 .alert-con{
 	display: none;
 	font-family: arial;
 	position: fixed;
-	bottom: 25px;
-	right: 45px;
-	height: 80px;
-	width: 400px;
+	bottom: 5px;
+	right: 5px;
 	border: 1px solid gray;
     border-radius: 8px;
 	z-index: 99999;
@@ -530,21 +643,23 @@ small {
 }
 
 .alert-header{
+    vertical-align:top;
 	position: relative;
-	float: left;
+	display: inline-block;
 	background-color: transparent;
-	height: 100%;
 	width: 68px;
 	color: white;
+	height: 80px;
 }
 
 .alert-body{
-	float: right;
+    vertical-align:top;
+	display: inline-block;
 	background-color: white;
-	height: 78px;
-	width: 302px;
+	height: 80px;
+	width: 250px;
 	color: #546e7a;
-	padding: 5px 5px 5px 25px;
+	padding: 5px 5px 5px 15px;
 	font-size: 14px;
 }
 

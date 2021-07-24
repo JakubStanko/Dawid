@@ -4,36 +4,25 @@
     <div class="body-container">
         <div class="services-container">
             <div class="icon-container">
-                <i class="wash-icon"></i>
+                <i class="list-icon"></i>
             </div>
             <div class="content-title">
                 Unsere Dienstleistungen
             </div>
             <line></line>
+            {% for srvice in services %}
             <div class="content-title">
-                <i class="okay-icon custom-okay-icon"></i>Pranie
+                <i class="okay-icon custom-okay-icon"></i>
+                {{ srvice.serviceTitle }}
             </div>
             <div class="content-text content-frame">
-                Tutaj wypada napisać o praniu.
+                {{ srvice.serviceValue }}
             </div>
-            <div class="content-title">
-                <i class="okay-icon custom-okay-icon"></i>Odkurzanie
-            </div>
+            {% else %}
             <div class="content-text content-frame">
-                Tutaj wypada napisać o odkurzaniu.
+                There is no services.
             </div>
-            <div class="content-title">
-                <i class="okay-icon custom-okay-icon"></i>Odświrzanie
-            </div>
-            <div class="content-text content-frame">
-                Tutaj wypada napisać o odświerzaniu
-            </div>
-            <div class="content-title">
-                <i class="okay-icon custom-okay-icon"></i>Dezynfekcja
-            </div>
-            <div class="content-text content-frame">
-                Tutaj wypada napisać o dezynfekcji
-            </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

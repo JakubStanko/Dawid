@@ -2,8 +2,29 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 #
-save_image_route:
+yaml_save_image_route:
     path: /save_image_file
     controller: App\Controller\ImageController::main
     options:
         expose: true
+yaml_hide_service_route:
+    path: /hide_service
+    controller: App\Controller\ConfigServiceController::hide
+    options:
+        expose: true
+yaml_unhide_service_route:
+    path: /unhide_service
+    controller: App\Controller\ConfigServiceController::unhide
+    options:
+        expose: true
+yaml_delete_service_route:
+    path: /delete_service
+    controller: App\Controller\ConfigServiceController::delete
+    options:
+        expose: true
+yaml_media_links:
+    path: /media_link
+    controller: App\Controller\ConfigMediaController::catchAction
+yaml_header:
+    path: /header
+    controller: App\Controller\ConfigHeaderController::catchAction

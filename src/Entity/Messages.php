@@ -54,7 +54,7 @@ class Messages
      * @ORM\Column(type="integer")
      * @var int
      */
-    private $status;
+    private $status = 0;
 
     /**
      * @ORM\Column(type="boolean")

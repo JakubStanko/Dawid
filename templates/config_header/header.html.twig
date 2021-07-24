@@ -1,0 +1,21 @@
+{% for header in headerData %}
+    <span class="logo-text">{{ header.title }}</span>
+    <span class="main-text d-none d-lg-inline-block">{{ header.description }}</span>
+    <div class="preloader-container">
+        <center style="position: relative; top: 30%; color: white;">
+            <span class="logo-text">{{ header.title }}</span><br />
+            Loading...
+        </center>
+        <line style="border-color: white; position: relative; top: 40%;"></line>
+    </div>
+{% else %}
+    <span class="logo-text">Title</span>
+    <span class="main-text d-none d-lg-inline-block">description</span>
+    <div class="preloader-container">
+        <center style="position: relative; top: 30%; color: white;">
+            <span class="logo-text">Title</span><br />
+            Loading...
+        </center>
+        <line style="border-color: white; position: relative; top: 40%;"></line>
+    </div>
+{% endfor %}

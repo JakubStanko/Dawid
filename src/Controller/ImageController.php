@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 class ImageController extends Controller
 {
     /**
-     * @route(methods={"POST"})
+     * @route("/save_image_file",methods={"POST"})
      * @param Request $request
      */
     public function main(Request $request): Response

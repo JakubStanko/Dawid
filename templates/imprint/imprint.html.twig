@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="body-container">
+        <div class="contact-container">
+            {% for contactData in contact %}
+                {% if contactData.companyName is not empty %}
+                    <div class="content-title">
+                        {{ contactData.companyName }}
+                    </div>
+                {% endif %}
+                    <div class="content-text">
+                        {{ contactData.postCode }},{{ contactData.city }}<br />
+                        {{ contactData.street }}
+                    </div>
+                {% if contactData.phone is not empty %}
+                    <div class="content-title">
+                        Telefon:
+                    </div>
+                    <div class="content-text">
+                        {{ contactData.phone }}
+                    </div>
+                {% endif %}
+                {% if contactData.email is not empty %}
+                    <div class="content-title">
+                        Email:
+                    </div>
+                    <div class="content-text">
+                        {{ contactData.email }}
+                    </div>
+                {% endif %}
+                {% if contactData.vat is not empty %}
+                    <div class="content-title">
+                        Finanzamt: Bautzen :
+                    </div>
+                    <div class="content-text">
+                        {{ contactData.vat }}
+                    </div>
+                {% endif %}
+                {% if contactData.brn is not empty %}
+                    <div class="content-title">
+                        Handelsregister:
+                    </div>
+                    <div class="content-text">
+                        {{ contactData.brn }}
+                    </div>
+                {% endif %}
+                {% if contactData.owner is not empty %}
+                    <div class="content-title">
+                        Geschäftsführer:
+                    </div>
+
+                    <div class="content-text">
+                        {{ contactData.owner }}
+                    </div>
+                {% endif %}
+                <div class="content-title">
+                    Copyright ©
+                </div>
+                <div class="content-text">
+                    Diese Website ist durch Copyright, Rechte an geistigem Eigentum und allen anderen entsprechenden Rechten geschützt. Die Site wird von uns veröffentlicht und darf nur durch Herunterladen und Anzeigen auf einem einzelnen Computer und/oder durch einen einzelnen Ausdruck für den privaten oder internen geschäftlichen Bedarf vervielfältigt werden. Die Site darf ohne vorherige schriftliche Genehmigung durch uns auf keine andere Weise vervielfältigt, übertragen oder in einem Netzwerk verfügbar gemacht werden. Alle weiteren Rechte vorbehalten.
+                </div>
+                <div class="content-title">
+                    Fotos/Grafiken:
+                </div>
+                <div class="content-text">
+                    Alle Bilder sind urheberrechtlich geschützt! Ein Kopieren und Verwenden der Bilder jeglicher Art bedarf der ausdrücklichen Zustimmung des Inhabers der Webseite. Für das Design wurden Fotos der folgenden Fotografen verwendet: © James Steidl - Fotolia.com © Gordand - Fotolia.com © Alhim - Fotolia.com © pgottschalk - Fotolia.com
+                </div>
+                <div class="content-title">
+                    Konzeption und Erstellung des Webshops::
+                </div>
+                <div class="content-text">
+                    js.px
+                </div>
+            {% else %}
+
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

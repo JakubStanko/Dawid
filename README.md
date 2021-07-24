@@ -1,9 +1,9 @@
 # CONFIGURATION
 #
-# First call all entities
+# First - call all entities
 # > php bin/console d:s:u --force
 #
-# Second load data fixures
+# Second - load data fixures
 # > php bin/console doctrine:fixtures:load
 # > yes
 #
@@ -11,7 +11,7 @@
 # login: admin@admin.com
 # password: admin123
 #
-# Third set new ReCaptcha Keys in .env file
+# Third - set new ReCaptcha Keys in .env file
 # GOOGLE_RECAPTCHA_SITE_KEY=
 # GOOGLE_RECAPTCHA_SECRET=
 #

@@ -4,12 +4,12 @@ namespace App\Controller;
 
 use App\Service\ReCaptchaKeys;
 use App\Entity\Messages;
+use App\Entity\Contact;
 use App\Type\MessagesType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\RedirectToRoute;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use ReCaptcha\ReCaptcha;
@@ -17,7 +17,7 @@ use ReCaptcha\ReCaptcha;
 class ContactController extends Controller
 {
     /**
-     * @Route("/contact")
+     * @Route("/contact",name="app_contact")
      * @param EntityManagerInterface $entityManager
      * @param ReCaptchaKeys $ReCaptchaKeys
      * @param Request $request
@@ -25,7 +25,19 @@ class ContactController extends Controller
      */
     public function add(ReCaptchaKeys $ReCaptchaKeys, Request $request, EntityManagerInterface $entityManager): Response
     {
-        //Create new formular for Messages $request
+        /**
+         * Catch Contact data
+         * Count: all
+         * Oder: Asc
+         */
+        $ContactRepository = $entityManager->getRepository(Contact::class);
+        $contact = $ContactRepository->findAll();
+
+        /**
+         * Kontakt formular
+         * Privaty Accept: Yes
+         * reCaptcha: Yes
+         */
         $Messages = new Messages();
         $form = $this->createForm(MessagesType::class, $Messages);
         $form->handleRequest($request);
@@ -33,8 +45,6 @@ class ContactController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             //Check ReChaptcha v2
-
-
             $recaptcha = new ReCaptcha($ReCaptchaKeys->getSecret());
             $resp = $recaptcha->verify($request->request->get('g-recaptcha-response'), $request->getClientIp());
 
@@ -59,7 +69,7 @@ class ContactController extends Controller
         }
 
         return $this->render('contact/contact.html.twig',[
-            'empty_key'=>'empty',
+            'contact'=>$contact,
             'form'=> $form->createView()
         ]);
     }

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create service block{% endblock %}
+{% block body %}
+<div class="body-container">
+    <div class="services-container">
+            <div class="content-text">
+                There you can <b>edit</b> selected service.
+            </div>
+            {% for label, messages in app.flashes(['success']) %}
+                {% for message in messages %}
+                    <div class="flash-container flash-{{ label }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for rowValue in serviceValue %}
+                {% if form is defined %}
+                    {{ form_start(form, {'action': path('app_config_service_edit',{'id' : rowValue.Id}), 'method': 'POST'}) }}
+                        {{ form_label(form.serviceTitle) }}
+                        {{ form_help(form.serviceTitle) }}
+                        {{ form_widget(form.serviceTitle, {'value' :  rowValue.serviceTitle}) }}
+                        {{ form_label(form.serviceValue) }}
+                        {{ form_help(form.serviceValue) }}
+                        {{ form_widget(form.serviceValue, {'value' :  rowValue.serviceValue}) }}
+                        {{ form_label(form.visibility) }}
+                        {{ form_help(form.visibility) }}
+                        {{ form_widget(form.visibility, {'value' :  rowValue.visibility}) }}
+                        {{ form_row(form.Update) }}
+                    {{ form_end(form) }}
+                {% elseif form is not defined %}
+                    <div class="content-text">
+                        No form is defined there.
+                    </div>
+                {% endif %}
+            {% else %}
+                    <div class="content-text">
+                        Not found service data.
+                    </div>
+            {% endfor %}
+    </div>
+</div>
+{% endblock %}

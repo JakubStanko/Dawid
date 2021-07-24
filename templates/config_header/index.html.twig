@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Config header{% endblock %}
+
+{% block body %}
+<div class="body-container">
+    <div class="services-container">
+            <div class="content-title">
+                There you can <b>edit</b> header data.
+            </div>
+            <br />
+            <div class="content-title">
+                <b>Instruction:</b>
+            </div>
+            <div class="content-text">
+                if the field is left blank, it will not be shown in header section.
+            </div>
+            {% for label, messages in app.flashes(['success']) %}
+                {% for message in messages %}
+                    <div class="flash-container flash-{{ label }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for header in headerData %}
+                {% if form is defined %}
+                    {{ form_start(form, {'action': path('app_config_header'), 'method': 'POST'}) }}
+                        {{ form_label(form.title) }}
+                        {{ form_help(form.title) }}
+                        {{ form_widget(form.title, {'value':header.title}) }}
+                        {{ form_label(form.description) }}
+                        {{ form_help(form.description) }}
+                        {{ form_widget(form.description, {'value':header.description}) }}
+                        {{ form_row(form.Update) }}
+                    {{ form_end(form) }}
+                {% elseif form is not defined %}
+                    <div class="content-text">
+                        No form is defined there.
+                    </div>
+                {% endif %}
+            {% else %}
+                    <div class="content-text">
+                        Not found header data.
+                    </div>
+            {% endfor %}
+    </div>
+</div>
+{% endblock %}

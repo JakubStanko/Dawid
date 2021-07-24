@@ -43,4 +43,11 @@ $(document).ready(function(){
         $("html, body").animate({scrollTop: 0}, 2000);
     });
 
+    $('.service-options-container').on('mouseenter','.service-option-row > .service-menu-option',function(){
+        $(this).next().show();
+    });
+
+    $('.service-options-container').on('mouseleave','.service-option-row > .service-menu-option',function(){
+        $(this).next().hide();
+    });
 });

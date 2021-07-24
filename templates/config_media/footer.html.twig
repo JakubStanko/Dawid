@@ -1,0 +1,23 @@
+<div class="foot-container">
+    <div class="links-container">
+        <a href="/imprint">Impressum</a> <b style="color: white;">|</b>
+        <a href="/personal_data">Datenschutz</a> <b style="color: white;">|</b>
+        <a href="/contact">Kontakt</a>
+    </div>
+
+    <span class="main-text">Copyright © js.px 2021</span>
+    <span class="main-text">Alle Rechte vorbehalten.</span><br>
+    <div class="media-container">
+        {% for media in mediaData %}
+            {% if media.facebook is not empty %}
+                <i class="facebook-ico" onclick="location.href='{{ media.facebook }}'"></i>
+            {% endif %}
+            {% if media.twitter is not empty %}
+                <i class="twitter-ico" onclick="location.href='{{ media.twitter }}'"></i>
+            {% endif %}
+            {% if media.instagram is not empty %}
+                <i class="instagram-ico" onclick="location.href='{{ media.instagram }}'"></i>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

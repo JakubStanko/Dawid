@@ -11,38 +11,42 @@
                 Der Kontakt zu uns
             </div>
             <line></line>
+            {% for contactData in contact %}
             <div class="content-title">
-                D&J Professionelle PolsterReinigung
+                {{ contactData.companyName }}
             </div>
             <div class="content-text">
-                kod_pocztowy,miasto<br />
-                nazwa_ulicy 1b/2b
+                {{ contactData.postCode }},{{ contactData.City }}<br />
+                {{ contactData.street }}
             </div>
             <div class="position-container">
                 <div class="content-title">
                     Finden Sie uns:
                 </div>
-                <iframe scrolling="no" crossorigin="anonymous" marginheight="0" marginwidth="0" id="gmap_canvas" src="https://maps.google.com/maps?width=302&amp;height=293&amp;hl=en&amp;q=49.2235,7.5072&amp;t=k&amp;z=17&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" class="google-map container-shadow" frameborder="0"></iframe>
+                <iframe scrolling="no" crossorigin="anonymous" marginheight="0" marginwidth="0" id="gmap_canvas" src="https://maps.google.com/maps?width=302&amp;height=293&amp;hl=en&amp;q={{ contactData.street }}%20{{ contactData.city }}+()&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" class="google-map container-shadow" width="520" height="400" frameborder="0"></iframe>
             </div>
             <br />
             <div class="content-title">
                 Telefon:
             </div>
             <div class="content-text">
-                Container value
+                {{ contactData.phone }}
             </div>
             <div class="content-title">
                 Email:
             </div>
             <div class="content-text">
-                Container value
+                {{ contactData.email }}
             </div>
             <div class="content-title">
                 Internet:
             </div>
             <div class="content-text">
-                Container value
+                {{ contactData.website }}
             </div>
+            {% else %}
+
+            {% endfor %}
             <br />
             <br />
             <br />
