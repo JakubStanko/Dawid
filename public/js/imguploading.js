@@ -60,7 +60,7 @@ $(document).ready(function(){
 		5000);
 	}
 
-    $(document).on('change','#PictureJpgFile,#PicturePngFile',function(){
+    $(document).on('change','#PictureJpgFile,#PicturePngFile,#PictureIcoFile',function(){
 		$('.dark-background').show();
 		//Catch last part from url
         var url = $(location).attr('href'),
@@ -75,7 +75,7 @@ $(document).ready(function(){
 			file_type = $(this).data('file-type'),
 			file_folder = '';
 
-		if ( (file_type != 'jpg') && (file_type != 'png')) {
+		if ( (file_type != 'jpg') && (file_type != 'png') && (file_type != 'ico')) {
 			console.log();
 			alert_incorrect_adv('wrong button data.','wrongData');
 			$('body').find('.dark-background').hide();
@@ -97,7 +97,11 @@ $(document).ready(function(){
 			} else if (file_type == 'png') {
 				file_folder = 'icons';
 				file_type = 'ico';
+			} else if (file_type == 'ico') {
+				file_folder = 'icons';
+				file_type = 'ico';
 			}
+
 
 			//Set form data
 			var form_data = new FormData();

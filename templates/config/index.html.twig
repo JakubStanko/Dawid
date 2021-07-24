@@ -1,7 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Configuration palen{% endblock %}
-
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('uploading') }}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+{% endblock %}
 {% block body %}
     <div class="body-container">
         <div class="services-container">
@@ -13,10 +18,23 @@
             </div>
             <line></line>
             <div class="content-title">
+                Favico configuration
+            </div>
+            <div class="content-text">
+                There you can change browser tab icon.<br />
+                - Click Upload button to select new icon. Only .ico format.<br />
+                - We recommend to use 32x32px icons.
+            </div>
+            <label>
+                <input type="file" id="PictureIcoFile" style="display:none;" data-file-type="ico">
+                <div class="main-button dbtn">Upload</div>
+            </label>
+            <line></line>
+            <div class="content-title">
                 Messages
             </div>
             <div class="content-text">
-                There you can open and delete private and public recommendation.
+                There you can open / delete private or public recommendation.
             </div>
             <div class="row">
                 <button class="config-button" onclick="location.href='{{ path('app_config_private_list') }}'">
@@ -114,4 +132,5 @@
             </div>
         </div>
     </div>
+    <div class="dark-background" style="position: fixed; top: 0; display: none;"></div>
 {% endblock %}
